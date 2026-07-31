@@ -1,0 +1,186 @@
+:root {
+  color-scheme: dark;
+  color: #111;
+  background: #f4f4f7;
+  font-family: Inter, system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.student-form-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.student-form {
+  width: min(740px, 100%);
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 24px 80px rgba(31, 41, 55, 0.12);
+  padding: 32px;
+}
+
+.student-form h1 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-size: clamp(2rem, 2vw, 2.5rem);
+  letter-spacing: -0.03em;
+}
+
+form {
+  display: grid;
+  gap: 18px;
+}
+
+.field-group,
+.choice-group {
+  display: grid;
+  gap: 10px;
+}
+
+label {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+  color: #0f172a;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='number'],
+input[type='date'],
+input[type='color'],
+select,
+textarea {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: #f9fafb;
+  color: #0f172a;
+  caret-color: #0f172a;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type='text']:focus,
+input[type='email']:focus,
+input[type='password']:focus,
+input[type='number']:focus,
+input[type='date']:focus,
+input[type='color']:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+input[type='range'] {
+  width: 100%;
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.checkbox-group,
+.choice-group {
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 16px;
+  background: #f8fafc;
+}
+
+.choice-group {
+  gap: 12px;
+}
+
+.checkbox-inline,
+.radio-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  color: #334155;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+legend {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+button[type='submit'] {
+  width: fit-content;
+  border: none;
+  border-radius: 999px;
+  background: #2563eb;
+  color: #ffffff;
+  padding: 14px 24px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+button[type='submit']:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+button[type='submit']:focus-visible {
+  outline: 4px solid rgba(37, 99, 235, 0.25);
+  outline-offset: 2px;
+}
+
+.summary {
+  margin-top: 20px;
+  padding: 18px 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background: #f8fafc;
+}
+
+.summary h2 {
+  margin: 0 0 14px;
+  font-size: 1.15rem;
+}
+
+.summary ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.summary li {
+  color: #334155;
+}
+
+@media (max-width: 640px) {
+  .student-form {
+    padding: 24px 18px;
+  }
+}
