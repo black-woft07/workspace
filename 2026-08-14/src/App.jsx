@@ -47,17 +47,12 @@ function App() {
 function Reloj() {
   const [segundos, setSegundos] = useState(0);
 
-  // 🐛 BUG 1 — Este efecto arranca un setInterval pero nunca lo limpia.
-  // Cuando el componente se desmonta (al ocultar el reloj), el intervalo
-  // sigue corriendo en segundo plano. Abran la consola, oculten el reloj
-  // con el botón, y fíjense si los logs de "tick" siguen apareciendo.
   useEffect(() => {
     console.log('⏰ Reloj montado');
     const id = setInterval(() => {
       setSegundos((s) => {
-        const nuevoValor = s + 1;
-        console.log('tick, segundos:', nuevoValor);
-        return nuevoValor;
+        console.log('tick, segundos:', s + 1);
+        return s + 1;
       });
     }, 1000);
 
@@ -76,9 +71,8 @@ function ContadorAutomatico() {
   useEffect(() => {
     const id = setInterval(() => {
       console.log('El contador según el efecto es:', contador);
-      setContador((valorActual) => valorActual + 1);
+      setContador((prev) => prev + 1);
     }, 1000);
-
     return () => clearInterval(id);
   }, [contador]);
 
@@ -88,11 +82,6 @@ function ContadorAutomatico() {
 function RastreadorVentana() {
   const [ancho, setAncho] = useState(window.innerWidth);
 
-  // 🐛 BUG 3 — El efecto depende de 'ancho', así que cada vez que la
-  // ventana cambia de tamaño el efecto se vuelve a ejecutar y agrega
-  // OTRO listener de resize, sin haber quitado el anterior. Prueben
-  // achicar/agrandar la ventana varias veces y cuenten cuántas veces
-  // se repite el mismo mensaje en consola.
   useEffect(() => {
     function manejarResize() {
       console.log('Resize detectado, ancho:', window.innerWidth);
@@ -112,9 +101,6 @@ function RastreadorVentana() {
 function PerfilUsuario({ id }) {
   const [nombre, setNombre] = useState('');
 
-  // 🐛 BUG 4 — El efecto usa 'id' pero no lo incluye en el arreglo de
-  // dependencias. Por eso, aunque cambien de usuario con los botones,
-  // el efecto no se vuelve a ejecutar y el nombre no se actualiza.
   useEffect(() => {
     console.log('Buscando datos del usuario', id);
     const nombres = { 1: 'Ana', 2: 'Luis' };
